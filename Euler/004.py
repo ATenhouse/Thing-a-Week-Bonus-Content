@@ -1,0 +1,27 @@
+"""
+Project Euler Problem 4
+=======================
+
+A palindromic number reads the same both ways. The largest palindrome made
+from the product of two 2-digit numbers is 9009 = 91 * 99.
+
+Find the largest palindrome made from the product of two 3-digit numbers.
+"""
+
+
+def is_palindrome(input_val):
+    return str(input_val) == str(input_val)[::-1]
+
+largest_three_digit = 999 * 999
+
+
+def find_max_palindrome(min=100, max=999):
+    max_palindrome = 0
+    for a in range(min, max + 1):
+        for b in range(a + 1, max + 1):  # avoid duplicates
+            prod = a * b
+            if prod > max_palindrome and str(prod) == str(prod)[::-1]:
+                max_palindrome = prod
+    return max_palindrome
+
+print find_max_palindrome(500, 999)
